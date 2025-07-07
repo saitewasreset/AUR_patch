@@ -1,0 +1,32 @@
+diff -uar gz-transport-gz-transport12_12.2.2.orig/src/cmd/CMakeLists.txt gz-transport-gz-transport12_12.2.2.new/src/cmd/CMakeLists.txt
+--- gz-transport-gz-transport12_12.2.2.orig/src/cmd/CMakeLists.txt	2024-11-08 04:08:54.000000000 +0800
++++ gz-transport-gz-transport12_12.2.2.new/src/cmd/CMakeLists.txt	2025-07-07 17:37:20.576104871 +0800
+@@ -26,7 +26,7 @@
+   gz-utils${GZ_UTILS_VER}::cli
+   ${PROJECT_LIBRARY_TARGET_NAME}
+ )
+-install(TARGETS ${topic_executable} DESTINATION ${CMAKE_INSTALL_LIBEXECDIR}/gz/${GZ_DESIGNATION}${PROJECT_VERSION_MAJOR}/)
++install(TARGETS ${topic_executable} DESTINATION ${IGN_LIB_INSTALL_DIR}/gz/${GZ_DESIGNATION}${PROJECT_VERSION_MAJOR}/)
+ 
+ # Build service CLI executable
+ set(service_executable gz-transport-service)
+@@ -36,7 +36,7 @@
+   gz-utils${GZ_UTILS_VER}::cli
+   ${PROJECT_LIBRARY_TARGET_NAME}
+ )
+-install(TARGETS ${service_executable} DESTINATION ${CMAKE_INSTALL_LIBEXECDIR}/gz/${GZ_DESIGNATION}${PROJECT_VERSION_MAJOR}/)
++install(TARGETS ${service_executable} DESTINATION ${IGN_LIB_INSTALL_DIR}/gz/${GZ_DESIGNATION}${PROJECT_VERSION_MAJOR}/)
+ 
+ # Build the unit tests.
+ gz_build_tests(TYPE UNIT SOURCES ${gtest_sources}
+@@ -101,8 +101,8 @@
+ 
+ # Set the library_location variable to the relative path to the library file
+ # within the install directory structure.
+-set(service_exe_location "../../../${CMAKE_INSTALL_LIBEXECDIR}/gz/${GZ_DESIGNATION}${PROJECT_VERSION_MAJOR}/$<TARGET_FILE_NAME:${service_executable}>")
+-set(topic_exe_location "../../../${CMAKE_INSTALL_LIBEXECDIR}/gz/${GZ_DESIGNATION}${PROJECT_VERSION_MAJOR}/$<TARGET_FILE_NAME:${topic_executable}>")
++set(service_exe_location "../../../${IGN_LIB_INSTALL_DIR}/gz/${GZ_DESIGNATION}${PROJECT_VERSION_MAJOR}/$<TARGET_FILE_NAME:${service_executable}>")
++set(topic_exe_location "../../../${IGN_LIB_INSTALL_DIR}/gz/${GZ_DESIGNATION}${PROJECT_VERSION_MAJOR}/$<TARGET_FILE_NAME:${topic_executable}>")
+ 
+ configure_file(
+   "cmd${GZ_DESIGNATION}.rb.in"
